@@ -20,8 +20,6 @@ class DrawNumberFactory extends Factory
     {
         return [
             'number' => fake()->randomNumber(2, true),
-            'draw_id' => Draw::factory(),
-            'number_type_id' => NumberType::factory(),
         ];
     }
 }

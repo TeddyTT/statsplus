@@ -20,7 +20,6 @@ class CountryFactory extends Factory
         return [
             'iso_code' => fake()->lexify('??'),
             'name' => fake()->word(),
-            'continent_id' => Continent::factory(),
         ];
     }
 }

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('draws', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->smallInteger('lottery_id');
+            $table->foreign('lottery_id')->references('id')->on('lotteries')->onUpdate('cascade')->onDelete('cascade');
             $table->date('drawn_at');
             $table->timestamps();
         });

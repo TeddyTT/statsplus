@@ -20,7 +20,6 @@ class OperatorFactory extends Factory
         return [
             'short_name' => fake()->lexify('???'),
             'name' => fake()->word(),
-            'country_id' => Country::factory(),
         ];
     }
 }

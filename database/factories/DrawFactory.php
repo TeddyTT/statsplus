@@ -19,7 +19,6 @@ class DrawFactory extends Factory
     {
         return [
             'drawn_at' => fake()->dateTimeThisDecade(),
-            'lottery_id' => Lottery::factory(),
         ];
     }
 }

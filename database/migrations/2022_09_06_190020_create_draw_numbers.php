@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('draw_numbers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('draw_id');
+            $table->foreign('draw_id')->references('id')->on('draws')->onUpdate('cascade')->onDelete('cascade');
+            $table->smallInteger('number_type_id');
+            $table->foreign('number_type_id')->references('id')->on('number_types')->onUpdate('cascade')->onDelete('restrict');
             $table->tinyInteger('number');
             $table->timestamps();
         });

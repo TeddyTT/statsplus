@@ -19,7 +19,6 @@ class LotteryFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'operator_id' => Operator::factory(),
         ];
     }
 }

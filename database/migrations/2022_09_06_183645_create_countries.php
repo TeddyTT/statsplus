@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->char('iso_code', 2);
-            $table->string('name', 255);
+            $table->tinyInteger('continent_id');
+            $table->foreign('continent_id')->references('id')->on('continents')->onUpdate('cascade')->onDelete('cascade');
+            $table->char('iso_code', 2)->unique();
+            $table->string('name', 255)->unique();
             $table->timestamps();
         });
     }
