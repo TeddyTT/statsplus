@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContinentController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\LotteryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class)->name("home");
+Route::resource('continent', ContinentController::class);
+Route::resource('country', CountryController::class);
+Route::resource('operator', OperatorController::class);
+Route::resource('lottery', LotteryController::class);
