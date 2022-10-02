@@ -26,4 +26,12 @@ class Continent extends Model
         'iso_code',
         'name',
     ];
+
+    /**
+     * Get the countries of the continent.
+     */
+    public function countries()
+    {
+        return $this->hasMany(Country::class);
+    }
 }

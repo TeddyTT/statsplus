@@ -22,6 +22,7 @@
                     <li><a href={{ route("country.index") }}>Pays</a></li>
                     <li><a href={{ route("operator.index") }}>Opérateurs</a></li>
                     <li><a href={{ route("lottery.index") }}>Lotterie</a></li>
+                    <li><a href={{ route("draw.index") }}>Draw</a></li>
                 </ul>
             </div>
         </nav>

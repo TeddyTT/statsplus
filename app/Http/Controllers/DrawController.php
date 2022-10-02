@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Continent;
+use App\Models\Draw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ContinentController extends Controller
+class DrawController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class ContinentController extends Controller
      */
     public function index()
     {
-        $continents = Continent::get();
+        $draws = Draw::get();
 
-        return view("continent.index", ["continents" => $continents]);
+        return view("draw.index", ["draws" => $draws]);
     }
 
     /**

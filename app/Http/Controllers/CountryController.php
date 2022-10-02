@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = DB::table("countries")->get();
+        $countries = Country::get();
 
         return view("country.index", ["countries" => $countries]);
     }

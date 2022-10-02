@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lottery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class LotteryController extends Controller
      */
     public function index()
     {
-        $lotteries = DB::table("lotteries")->get();
+        $lotteries = Lottery::get();
 
         return view("lottery.index", ["lotteries" => $lotteries]);
     }

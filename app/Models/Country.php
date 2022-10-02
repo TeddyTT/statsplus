@@ -26,4 +26,20 @@ class Country extends Model
         'name',
         'continent_id',
     ];
+
+    /**
+     * Get the operators of the country.
+     */
+    public function operators()
+    {
+        return $this->hasMany(Operator::class);
+    }
+
+    /**
+     * Get the continent that belongs the country.
+     */
+    public function continent()
+    {
+        return $this->belongsTo(Continent::class);
+    }
 }

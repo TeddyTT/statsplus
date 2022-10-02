@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Operator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $operators = DB::table("operators")->get();
+        $operators = Operator::get();
 
         return view("operator.index", ["operators" => $operators]);
     }

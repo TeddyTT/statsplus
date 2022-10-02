@@ -26,4 +26,20 @@ class Operator extends Model
         'name',
         'country_id',
     ];
+
+    /**
+     * Get the lotteries of the operator.
+     */
+    public function lotteries()
+    {
+        return $this->hasMany(Lottery::class);
+    }
+
+    /**
+     * Get the country that belongs the operator.
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }

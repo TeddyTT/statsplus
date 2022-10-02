@@ -25,4 +25,20 @@ class Draw extends Model
         'drawn_at',
         'lottery_id',
     ];
+
+    /**
+     * Get the draws of the lottery.
+     */
+    public function drawNumbers()
+    {
+        return $this->hasMany(DrawNumber::class);
+    }
+
+    /**
+     * Get the lottery that belongs the draw.
+     */
+    public function lottery()
+    {
+        return $this->belongsTo(Lottery::class);
+    }
 }

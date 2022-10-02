@@ -25,4 +25,20 @@ class Lottery extends Model
         'name',
         'operator_id'
     ];
+
+    /**
+     * Get the draws of the lottery.
+     */
+    public function draws()
+    {
+        return $this->hasMany(Draw::class);
+    }
+
+    /**
+     * Get the operator that belongs the lottery.
+     */
+    public function operator()
+    {
+        return $this->belongsTo(Operator::class);
+    }
 }

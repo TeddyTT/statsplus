@@ -24,4 +24,13 @@ class NumberType extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get the draws of the lottery.
+     */
+    public function drawNumbers()
+    {
+        return $this->hasMany(DrawNumber::class);
+    }
+
 }

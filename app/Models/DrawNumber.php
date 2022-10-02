@@ -26,4 +26,20 @@ class DrawNumber extends Model
         'draw_id',
         'number_type_id',
     ];
+
+    /**
+     * Get the draw that belongs the number.
+     */
+    public function draw()
+    {
+        return $this->belongsTo(Draw::class);
+    }
+
+    /**
+     * Get the draw that belongs the number.
+     */
+    public function numberType()
+    {
+        return $this->belongsTo(NumberType::class);
+    }
 }
