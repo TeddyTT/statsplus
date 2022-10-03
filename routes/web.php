@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContinentController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DrawController;
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\LotteryController;
 use App\Http\Controllers\HomeController;
@@ -25,3 +26,6 @@ Route::resource('country', CountryController::class);
 Route::resource('operator', OperatorController::class);
 Route::resource('lottery', LotteryController::class);
 Route::resource('draw', DrawController::class);
+
+// Fallback route (404...)
+Route::fallback(FallbackController::class);

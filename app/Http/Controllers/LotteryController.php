@@ -49,7 +49,7 @@ class LotteryController extends Controller
      */
     public function show($id)
     {
-        //
+        $lottery = Lottery::findOrFail($id);
     }
 
     /**

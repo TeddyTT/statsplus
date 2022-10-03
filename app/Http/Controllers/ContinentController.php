@@ -49,7 +49,7 @@ class ContinentController extends Controller
      */
     public function show($id)
     {
-        //
+        $continent = Continent::findOrFail($id);
     }
 
     /**

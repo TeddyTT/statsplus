@@ -49,7 +49,7 @@ class DrawController extends Controller
      */
     public function show($id)
     {
-        //
+        $draw = Draw::findOrFail($id);
     }
 
     /**
