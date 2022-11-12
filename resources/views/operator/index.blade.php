@@ -4,6 +4,7 @@
 
 @section('content')
     <p>Operator Index</p>
+    <p><a href="{{ route('operator.create') }}">Créer opérateur</a></p>
     <ul>
         @foreach ($operators as $operator)
             <li>{{ $operator->name }} <i>({{ $operator->short_name }})</i>

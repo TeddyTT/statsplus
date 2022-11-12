@@ -27,7 +27,7 @@ class ContinentController extends Controller
      */
     public function create()
     {
-        //
+        return view("continent.create");
     }
 
     /**
@@ -38,7 +38,14 @@ class ContinentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $continent = new Continent();
+
+        $continent->iso_code = $request->iso_code;
+        $continent->name = $request->name;
+
+        $continent->save();
+
+        return redirect(route('continent.index'));
     }
 
     /**

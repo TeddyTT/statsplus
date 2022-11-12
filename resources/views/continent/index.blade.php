@@ -4,6 +4,7 @@
 
 @section('content')
     <p>Continent Index</p>
+    <p><a href="{{ route('continent.create') }}">Créer continent</a></p>
     <ul>
         @foreach ($continents as $continent)
             <li>{{ $continent->name }} <i>({{ $continent->iso_code }})</i>

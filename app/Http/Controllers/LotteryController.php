@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lottery;
+use App\Models\Operator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,7 +28,9 @@ class LotteryController extends Controller
      */
     public function create()
     {
-        //
+        $operators = Operator::get();
+
+        return view("lottery.create", ["operators" => $operators]);
     }
 
     /**
@@ -38,7 +41,14 @@ class LotteryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lottery = new Lottery();
+
+        $lottery->operator_id = $request->operator;
+        $lottery->name = $request->name;
+
+        $lottery->save();
+
+        return redirect(route('lottery.index'));
     }
 
     /**

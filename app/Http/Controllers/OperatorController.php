@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Operator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,9 @@ class OperatorController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::get();
+
+        return view("operator.create", ["countries" => $countries]);
     }
 
     /**
@@ -38,7 +41,15 @@ class OperatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $operator = new Operator();
+
+        $operator->country_id = $request->country;
+        $operator->short_name = $request->short_name;
+        $operator->name = $request->name;
+
+        $operator->save();
+
+        return redirect(route('operator.index'));
     }
 
     /**

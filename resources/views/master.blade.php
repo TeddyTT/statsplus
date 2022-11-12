@@ -15,9 +15,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-primary text-white">
+    <body class="">
         <div class="container">
-            <nav class="navbar navbar-dark navbar-expand-lg">
+            <nav class="navbar navbar-light navbar-expand-lg">
                 <a class="navbar-brand" href={{ route("home") }}>Stats<sup>+</sup></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

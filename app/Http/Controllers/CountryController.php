@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Continent;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,9 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        $continents = Continent::get();
+
+        return view("country.create", ["continents" => $continents]);
     }
 
     /**
@@ -38,7 +41,15 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $country = new Country();
+
+        $country->continent_id = $request->continent;
+        $country->iso_code = $request->iso_code;
+        $country->name = $request->name;
+
+        $country->save();
+
+        return redirect(route('country.index'));
     }
 
     /**
