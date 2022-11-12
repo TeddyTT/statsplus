@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContinentFormRequest;
 use App\Models\Continent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,12 +37,9 @@ class ContinentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContinentFormRequest $request)
     {
-        $request->validate([
-            "iso_code" => ["required", "unique:continents", "max:2"],
-            "name" => ["required", "max:255"]
-        ]);
+        $request->validated();
 
         Continent::create([
             "iso_code" => $request->iso_code,
@@ -70,7 +68,9 @@ class ContinentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $continent = Continent::where("id", $id)->first();
+    
+        return view("continent.update", ["continent" => $continent]);
     }
 
     /**
@@ -80,9 +80,13 @@ class ContinentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContinentFormRequest $request, $id)
     {
-        //
+        $request->validated();
+        
+        Continent::where("id", $id)->update($request->except(["_token", "_method"]));
+
+        return redirect(route('continent.index'));
     }
 
     /**

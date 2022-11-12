@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CountryFormRequest;
 use App\Models\Continent;
 use App\Models\Country;
 use Illuminate\Http\Request;
@@ -39,13 +40,9 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryFormRequest $request)
     {
-        $request->validate([
-            "continent_id" => ["required"],
-            "iso_code" => ["required", "unique:continents", "max:2"],
-            "name" => ["required", "max:255"]
-        ]);
+        $request->validated();
 
         Country::create([
             "continent_id" => $request->continent,
@@ -75,7 +72,10 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $country = Country::where("id", $id)->first();
+        $continents = Continent::get();
+    
+        return view("country.update", ["country" => $country, "continents" => $continents]);
     }
 
     /**
@@ -85,9 +85,13 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CountryFormRequest $request, $id)
     {
-        //
+        $request->validated();
+        
+        Country::where("id", $id)->update($request->except(["_token", "_method"]));
+
+        return redirect(route('country.index'));
     }
 
     /**

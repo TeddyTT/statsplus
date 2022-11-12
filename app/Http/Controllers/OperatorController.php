@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OperatorFormRequest;
 use App\Models\Country;
 use App\Models\Operator;
 use Illuminate\Http\Request;
@@ -39,13 +40,9 @@ class OperatorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OperatorFormRequest $request)
     {
-        $request->validate([
-            "country_id" => ["required"],
-            "short_name" => ["required", "unique:continents", "max:100"],
-            "name" => ["required", "max:255"]
-        ]);
+        $request->validated();
 
         Operator::create([
             "country_id" => $request->country,
@@ -75,7 +72,10 @@ class OperatorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $operator = Operator::where("id", $id)->first();
+        $countries = Country::get();
+    
+        return view("operator.update", ["operator" => $operator, "countries" => $countries]);
     }
 
     /**
@@ -85,9 +85,13 @@ class OperatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OperatorFormRequest $request, $id)
     {
-        //
+        $request->validated();
+        
+        Operator::where("id", $id)->update($request->except(["_token", "_method"]));
+
+        return redirect(route('operator.index'));
     }
 
     /**

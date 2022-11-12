@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LotteryFormRequest;
 use App\Models\Lottery;
 use App\Models\Operator;
 use Illuminate\Http\Request;
@@ -39,12 +40,9 @@ class LotteryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LotteryFormRequest $request)
     {
-        $request->validate([
-            "operator_id" => ["required"],
-            "name" => ["required", "max:255"]
-        ]);
+        $request->validated();
 
         Lottery::create([
             "operator_id" => $request->operator,
@@ -73,7 +71,10 @@ class LotteryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lottery = Lottery::where("id", $id)->first();
+        $operators = Operator::get();
+    
+        return view("lottery.update", ["lottery" => $lottery, "operators" => $operators]);
     }
 
     /**
@@ -83,9 +84,13 @@ class LotteryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LotteryFormRequest $request, $id)
     {
-        //
+        $request->validated();
+        
+        Lottery::where("id", $id)->update($request->except(["_token", "_method"]));
+
+        return redirect(route('lottery.index'));
     }
 
     /**

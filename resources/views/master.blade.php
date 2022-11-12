@@ -17,7 +17,7 @@
     </head>
     <body class="">
         <div class="container">
-            <nav class="navbar navbar-light navbar-expand-lg">
+            <nav class="navbar navbar-light navbar-expand-lg pt-3">
                 <a class="navbar-brand" href={{ route("home") }}>Stats<sup>+</sup></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,23 +25,24 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->routeIs("continent.*")) ? 'active border-bottom' : '' }}" href={{ route("continent.index") }}>Continents</a>
+                        <a class="nav-link {{ (request()->routeIs("continent.*")) ? 'active' : '' }}" href={{ route("continent.index") }}>Continents</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->routeIs("country.*")) ? 'active border-bottom' : '' }}" href={{ route("country.index") }}>Countries</a>
+                        <a class="nav-link {{ (request()->routeIs("country.*")) ? 'active' : '' }}" href={{ route("country.index") }}>Countries</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->routeIs("operator.*")) ? 'active border-bottom' : '' }}" href={{ route("operator.index") }}>Operators</a>
+                        <a class="nav-link {{ (request()->routeIs("operator.*")) ? 'active' : '' }}" href={{ route("operator.index") }}>Operators</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->routeIs("lottery.*")) ? 'active border-bottom' : '' }}" href={{ route("lottery.index") }}>Lotteries</a>
+                        <a class="nav-link {{ (request()->routeIs("lottery.*")) ? 'active' : '' }}" href={{ route("lottery.index") }}>Lotteries</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->routeIs("draw.*")) ? 'active border-bottom' : '' }}" href={{ route("draw.index") }}>Draws</a>
+                        <a class="nav-link {{ (request()->routeIs("draw.*")) ? 'active' : '' }}" href={{ route("draw.index") }}>Draws</a>
                     </li>
                 </ul>
             </nav>
             <div>
+                <hr />
                 @yield('content')
 
             </div>
