@@ -41,12 +41,15 @@ class LotteryController extends Controller
      */
     public function store(Request $request)
     {
-        $lottery = new Lottery();
+        $request->validate([
+            "operator_id" => ["required"],
+            "name" => ["required", "max:255"]
+        ]);
 
-        $lottery->operator_id = $request->operator;
-        $lottery->name = $request->name;
-
-        $lottery->save();
+        Lottery::create([
+            "operator_id" => $request->operator,
+            "name" => $request->name
+        ]);
 
         return redirect(route('lottery.index'));
     }

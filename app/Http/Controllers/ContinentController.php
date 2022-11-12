@@ -38,12 +38,15 @@ class ContinentController extends Controller
      */
     public function store(Request $request)
     {
-        $continent = new Continent();
+        $request->validate([
+            "iso_code" => ["required", "unique:continents", "max:2"],
+            "name" => ["required", "max:255"]
+        ]);
 
-        $continent->iso_code = $request->iso_code;
-        $continent->name = $request->name;
-
-        $continent->save();
+        Continent::create([
+            "iso_code" => $request->iso_code,
+            "name" => $request->name
+        ]);
 
         return redirect(route('continent.index'));
     }

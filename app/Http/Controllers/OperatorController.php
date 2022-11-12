@@ -41,13 +41,17 @@ class OperatorController extends Controller
      */
     public function store(Request $request)
     {
-        $operator = new Operator();
+        $request->validate([
+            "country_id" => ["required"],
+            "short_name" => ["required", "unique:continents", "max:100"],
+            "name" => ["required", "max:255"]
+        ]);
 
-        $operator->country_id = $request->country;
-        $operator->short_name = $request->short_name;
-        $operator->name = $request->name;
-
-        $operator->save();
+        Operator::create([
+            "country_id" => $request->country,
+            "short_name" => $request->short_name,
+            "name" => $request->name
+        ]);
 
         return redirect(route('operator.index'));
     }

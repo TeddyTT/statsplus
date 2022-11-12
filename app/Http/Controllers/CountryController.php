@@ -41,13 +41,17 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = new Country();
+        $request->validate([
+            "continent_id" => ["required"],
+            "iso_code" => ["required", "unique:continents", "max:2"],
+            "name" => ["required", "max:255"]
+        ]);
 
-        $country->continent_id = $request->continent;
-        $country->iso_code = $request->iso_code;
-        $country->name = $request->name;
-
-        $country->save();
+        Country::create([
+            "continent_id" => $request->continent,
+            "iso_code" => $request->iso_code,
+            "name" => $request->name
+        ]);
 
         return redirect(route('country.index'));
     }
