@@ -97,6 +97,8 @@ class ContinentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Continent::destroy($id);
+
+        return redirect(route('continent.index'));
     }
 }

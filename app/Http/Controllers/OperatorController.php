@@ -102,6 +102,8 @@ class OperatorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Operator::destroy($id);
+
+        return redirect(route('operator.index'));
     }
 }

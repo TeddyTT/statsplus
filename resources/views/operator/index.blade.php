@@ -15,6 +15,13 @@
                         <li>{{ $lottery->name }}</li>
                     @endforeach
                 </ul>
+                <form
+                        action="{{ route('operator.destroy', $operator->id) }}"
+                        method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button type="submit">[supprimer]</button>
+                </form>
             </li>
         @endforeach
     </ul>

@@ -15,6 +15,13 @@
                         <li>{{ $draw->drawn_at }}</li>
                     @endforeach
                 </ul>
+                <form
+                        action="{{ route('lottery.destroy', $lottery->id) }}"
+                        method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button type="submit">[supprimer]</button>
+                </form>
             </li>
         @endforeach
     </ul>

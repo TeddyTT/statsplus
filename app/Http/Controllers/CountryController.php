@@ -102,6 +102,8 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Country::destroy($id);
+
+        return redirect(route('country.index'));
     }
 }

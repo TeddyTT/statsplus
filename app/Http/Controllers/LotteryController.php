@@ -101,6 +101,8 @@ class LotteryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lottery::destroy($id);
+
+        return redirect(route('lottery.index'));
     }
 }

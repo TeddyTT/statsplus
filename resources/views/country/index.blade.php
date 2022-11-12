@@ -14,6 +14,13 @@
                     @foreach ($country->operators as $operator)
                         <li>{{ $operator->name }}</li>
                     @endforeach
+                    <form
+                            action="{{ route('country.destroy', $country->id) }}"
+                            method="POST">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit">[supprimer]</button>
+                    </form>
                 </ul>
             </li>
         @endforeach
